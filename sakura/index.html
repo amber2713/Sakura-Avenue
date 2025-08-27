@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakura Avenue - A Beautiful Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cambria:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cambria', serif;
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), 
+                         -1px -1px 0 white, 
+                         1px -1px 0 white, 
+                         -1px 1px 0 white, 
+                         1px 1px 0 white;
+        }
+        
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/Sakura.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: -2;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: #ff9aac;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8), 
+                         -2px -2px 0 white, 
+                         2px -2px 0 white, 
+                         -2px 2px 0 white, 
+                         2px 2px 0 white;
+        }
+        
+        p {
+            font-size: 1.8rem;
+            max-width: 800px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #fff4f6;
+        }
+        
+        .quote {
+            font-style: italic;
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            color: #ffe6eb;
+        }
+        
+        /* Navigation Icons */
+        .nav-icon {
+            position: absolute;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .nav-icon:hover {
+            transform: scale(1.3);
+        }
+        
+        .back-icon {
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            opacity: 0.8;
+        }
+        
+        .sakura-icon {
+            top: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            opacity: 0.6;
+        }
+        
+        .door-icon {
+            bottom: 33%;
+            right: 33%;
+            width: 60px;
+            height: 60px;
+            opacity: 0.5;
+        }
+        
+        /* Sakura falling animation */
+        .sakura-fall {
+            position: absolute;
+            top: -50px;
+            animation: fall linear forwards;
+            z-index: -1;
+            opacity: 0.7;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        
+        /* Footer */
+        footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="overlay"></div>
+    
+    <!-- Navigation Icons -->
+    <a href="https://amber2713.github.io/sitetone/squre/" class="nav-icon back-icon">
+        <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="#ff9aac" stroke="white" stroke-width="2"/>
+            <polygon points="60,25 30,50 60,75" fill="white"/>
+        </svg>
+    </a>
+    
+    <a href="https://amber2713.github.io/for-netlify/USTC-Garden-Party/" class="nav-icon sakura-icon">
+        <svg viewBox="0 0 100 100">
+            <path d="M50,20 
+                     C55,30 65,30 70,20 
+                     C80,40 80,50 70,60 
+                     C80,70 75,80 60,85 
+                     C50,95 50,95 40,85 
+                     C25,80 20,70 30,60 
+                     C20,50 20,40 30,20 
+                     C35,30 45,30 50,20" 
+                  fill="#ff9aac" stroke="white" stroke-width="1.5"/>
+        </svg>
+    </a>
+    
+    <a href="https://amber2713.github.io/for-netlify/door/" class="nav-icon door-icon">
+        <svg viewBox="0 0 100 100">
+            <rect x="30" y="20" width="40" height="60" rx="5" fill="#8B4513" stroke="white" stroke-width="2"/>
+            <circle cx="60" cy="50" r="5" fill="#DAA520"/>
+            <rect x="30" y="70" width="40" height="5" fill="#654321"/>
+        </svg>
+    </a>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Sakura Avenue</h1>
+        <p>Walking along this beautiful path of cherry blossoms, one can't help but feel a sense of peace and wonder at nature's breathtaking beauty.</p>
+        <p class="quote">"In the cherry blossom's shade, there's no such thing as a stranger." - Kobayashi Issa</p>
+    </div>
+    
+    <footer>
+        <p>Experience the Beauty of Nature | Sakura Avenue 2023</p>
+    </footer>
+
+    <script>
+        // Create falling sakura petals
+        function createSakura() {
+            const sakura = document.createElement('div');
+            sakura.classList.add('sakura-fall');
+            
+            // Random size
+            const size = Math.random() * 20 + 10;
+            sakura.style.width = `${size}px`;
+            sakura.style.height = `${size}px`;
+            
+            // Random position
+            sakura.style.left = `${Math.random() * 100}vw`;
+            
+            // Random animation duration
+            const duration = Math.random() * 10 + 5;
+            sakura.style.animationDuration = `${duration}s`;
+            
+            // Sakura SVG
+            sakura.innerHTML = `
+                <svg viewBox="0 0 100 100" width="${size}" height="${size}">
+                    <path d="M50,20 
+                             C55,30 65,30 70,20 
+                             C80,40 80,50 70,60 
+                             C80,70 75,80 60,85 
+                             C50,95 50,95 40,85 
+                             C25,80 20,70 30,60 
+                             C20,50 20,40 30,20 
+                             C35,30 45,30 50,20" 
+                          fill="#ffb7c5" stroke="#ff9aac" stroke-width="1"/>
+                </svg>
+            `;
+            
+            document.body.appendChild(sakura);
+            
+            // Remove after animation completes
+            setTimeout(() => {
+                sakura.remove();
+            }, duration * 1000);
+        }
+        
+        // Create multiple sakura petals
+        setInterval(createSakura, 300);
+        
+        // Initial sakura
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createSakura, i * 100);
+        }
+    </script>
+</body>
+</html>
