@@ -144,6 +144,78 @@
             font-size: 1.2rem;
             color: #fff;
         }
+        
+        /* New styles for the petal modal */
+        .petal-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .petal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            animation: scaleIn 0.5s ease;
+        }
+        
+        .petal-text {
+            font-size: 1.4rem;
+            color: #8b0000;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+            font-style: italic;
+            z-index: 1001;
+            max-width: 250px;
+        }
+        
+        .petal-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            animation: rotatePetal 15s linear infinite;
+        }
+        
+        .click-hint {
+            font-size: 1.2rem;
+            margin-top: -1rem;
+            margin-bottom: 2rem;
+            color: #ffe6eb;
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes scaleIn {
+            from { transform: translate(-50%, -50%) scale(0.5); }
+            to { transform: translate(-50%, -50%) scale(1); }
+        }
+        
+        @keyframes rotatePetal {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -183,8 +255,27 @@
     <!-- Main Content -->
     <div class="container">
         <h1>Sakura Avenue</h1>
+        <p class="click-hint">You can try clicking anywhere on the page</p>
         <p>Walking along this beautiful path of cherry blossoms, one can't help but feel a sense of peace and wonder at nature's breathtaking beauty.</p>
         <p class="quote">"In the cherry blossom's shade, there's no such thing as a stranger." - Kobayashi Issa</p>
+    </div>
+    
+    <!-- Petal Modal -->
+    <div id="petalModal" class="petal-modal">
+        <div class="petal-content">
+            <svg class="petal-svg" viewBox="0 0 100 100">
+                <path d="M50,20 
+                         C55,30 65,30 70,20 
+                         C80,40 80,50 70,60 
+                         C80,70 75,80 60,85 
+                         C50,95 50,95 40,85 
+                         C25,80 20,70 30,60 
+                         C20,50 20,40 30,20 
+                         C35,30 45,30 50,20" 
+                      fill="#ffb7c5" stroke="#ff9aac" stroke-width="1"/>
+            </svg>
+            <p id="petalText" class="petal-text"></p>
+        </div>
     </div>
     
     <footer>
@@ -239,6 +330,60 @@
         for (let i = 0; i < 15; i++) {
             setTimeout(createSakura, i * 100);
         }
+        
+        // Array of beautiful quotes
+        const beautifulQuotes = [
+            "Like cherry blossoms in the spring, our love blooms anew with each passing day.",
+            "In your eyes, I found my home. In your heart, I found my love.",
+            "Your love is the poetry my heart has been trying to write.",
+            "Every moment with you is like a beautiful dream I never want to end.",
+            "You are the missing piece I never knew I was searching for.",
+            "My love for you is a journey starting at forever and ending at never.",
+            "In a sea of people, my eyes will always search for you.",
+            "You are the sun that brightens my darkest days.",
+            "I loved you yesterday, I love you still, I always have, I always will.",
+            "Your voice is my favorite sound, and your name is my favorite word.",
+            "I never want to stop making memories with you.",
+            "You are my today and all of my tomorrows.",
+            "I fall in love with you more every day.",
+            "You are the answer to every prayer I've offered.",
+            "With you, I've found the love I always dreamed of.",
+            "Your smile is the first thing I want to see in the morning.",
+            "I would choose you in a hundred lifetimes, in a hundred worlds, in any version of reality.",
+            "You're my favorite hello and my hardest goodbye.",
+            "Home isn't a place, it's wherever I'm with you.",
+            "I love you not only for what you are, but for what I am when I am with you."
+        ];
+        
+        // Get modal elements
+        const petalModal = document.getElementById('petalModal');
+        const petalText = document.getElementById('petalText');
+        
+        // Function to show random quote
+        function showRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * beautifulQuotes.length);
+            petalText.textContent = beautifulQuotes[randomIndex];
+            petalModal.style.display = 'block';
+        }
+        
+        // Function to hide modal
+        function hideModal() {
+            petalModal.style.display = 'none';
+        }
+        
+        // Add click event listener to document
+        document.addEventListener('click', function(event) {
+            // Check if the click was on a navigation icon
+            const isNavIcon = event.target.closest('.nav-icon');
+            
+            // If not a nav icon, show the quote
+            if (!isNavIcon) {
+                showRandomQuote();
+            }
+        });
+        
+        // Close modal when clicking on it
+        petalModal.addEventListener('click', hideModal);
     </script>
 </body>
 </html>
