@@ -31,7 +31,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('images/Sakura.jpg') no-repeat center center;
+            background: linear-gradient(rgba(255, 182, 193, 0.2), rgba(255, 182, 193, 0.1)), 
+                        url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center;
             background-size: cover;
             z-index: -2;
         }
@@ -42,7 +43,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.2);
             z-index: -1;
         }
         
@@ -153,7 +154,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.4);
             z-index: 1000;
             animation: fadeIn 0.5s ease;
         }
@@ -163,24 +164,24 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
+            width: 400px;
+            height: 400px;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 30px;
+            padding: 40px;
             animation: scaleIn 0.5s ease;
         }
         
         .petal-text {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: #8b0000;
             text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
             line-height: 1.5;
             font-style: italic;
             z-index: 1001;
-            max-width: 250px;
+            max-width: 300px;
         }
         
         .petal-svg {
@@ -200,6 +201,74 @@
             color: #ffe6eb;
             font-style: italic;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Close button */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 1002;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: scale(1.1);
+        }
+        
+        .close-btn::before,
+        .close-btn::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            background: #ff9aac;
+        }
+        
+        .close-btn::before {
+            transform: rotate(45deg);
+        }
+        
+        .close-btn::after {
+            transform: rotate(-45deg);
+        }
+        
+        /* Clickable area indicators */
+        .click-area {
+            position: absolute;
+            top: 0;
+            width: 25%;
+            height: 100%;
+            z-index: 50;
+        }
+        
+        .click-area.left {
+            left: 0;
+        }
+        
+        .click-area.right {
+            right: 0;
+        }
+        
+        .click-area-text {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1rem;
+            font-style: italic;
+            pointer-events: none;
         }
         
         @keyframes fadeIn {
@@ -260,9 +329,18 @@
         <p class="quote">"In the cherry blossom's shade, there's no such thing as a stranger." - Kobayashi Issa</p>
     </div>
     
+    <!-- Non-clickable areas (for visual reference) -->
+    <div class="click-area left">
+        <div class="click-area-text">Non-clickable area</div>
+    </div>
+    <div class="click-area right">
+        <div class="click-area-text">Non-clickable area</div>
+    </div>
+    
     <!-- Petal Modal -->
     <div id="petalModal" class="petal-modal">
         <div class="petal-content">
+            <div class="close-btn" id="closeBtn"></div>
             <svg class="petal-svg" viewBox="0 0 100 100">
                 <path d="M50,20 
                          C55,30 65,30 70,20 
@@ -352,12 +430,147 @@
             "I would choose you in a hundred lifetimes, in a hundred worlds, in any version of reality.",
             "You're my favorite hello and my hardest goodbye.",
             "Home isn't a place, it's wherever I'm with you.",
-            "I love you not only for what you are, but for what I am when I am with you."
+            "I love you not only for what you are, but for what I am when I am with you.",
+            "Like cherry blossoms in the spring,our love blooms anew with each passing day.",
+            "In your eyes,I found my home.In your heart,I found my love.",
+            "Your love is the poetry my heart has been trying to write.",
+            "Every moment with you is like a beautiful dream I never want to end.",
+            "You are the missing piece I never knew I was searching for.",
+            "My love for you is a journey starting at forever and ending at never.",
+            "In a sea of people,my eyes will always search for you.",
+            "You are the sun that brightens my darkest days.",
+            "I loved you yesterday,I love you still,I always have,I always will.",
+            "Your voice is my favorite sound,and your name is my favorite word.",
+            "I never want to stop making memories with you.",
+            "You are my today and all of my tomorrows.",
+            "I fall in love with you more every day.",
+            "You are the answer to every prayer I've offered.",
+            "With you,I've found the love I always dreamed of.",
+            "Your smile is the first thing I want to see in the morning.",
+            "I would choose you in a hundred lifetimes,in a hundred worlds,in any version of reality.",
+            "You're my favorite hello and my hardest goodbye.",
+            "Home isn't a place,it's wherever I'm with you.",
+            "I love you not only for what you are,but for what I am when I am with you.",
+            "Like stars in the night sky,our love twinkles with endless possibilities.",
+            "In your smile,I found my happiness.In your touch,I found my comfort.",
+            "Your love is the melody my heart has been longing to hear.",
+            "Every glance at you is like a precious gift I cherish forever.",
+            "You are the hidden treasure I was destined to discover.",
+            "My love for you is a story that began with once upon a time and will never have an end.",
+            "In a crowd of faces,my heart will always beat for you.",
+            "You are the moon that lights up my darkest nights.",
+            "I loved you in the past,I love you now,I always did,I always will.",
+            "Your laughter is my favorite music,and your presence is my favorite place.",
+            "I never want to stop exploring the depths of our love.",
+            "You are my sunshine and all of my rainbows.",
+            "I fall more in love with you with each passing moment.",
+            "You are the fulfillment of every wish I've ever made.",
+            "With you,I've found the joy I always hoped for.",
+            "Your eyes are the first thing I want to see when I wake up.",
+            "I would choose you in a thousand lifetimes,in a thousand worlds,in any version of existence.",
+            "You're my favorite morning and my hardest nightfall.",
+            "Home isn't a house,it's wherever I'm with you.",
+            "I love you not only for what you do,but for who you are to me.",
+            "Like butterflies in the summer,our love flutters with pure delight.",
+            "In your kindness,I found my inspiration.In your patience,I found my strength.",
+            "Your love is the painting my heart has been trying to create.",
+            "Every thought of you is like a sweet dream I never want to wake up from.",
+            "You are the unexpected blessing I was always waiting for.",
+            "My love for you is a dance that started with a single step and will never stop.",
+            "In a sea of voices,my ears will always listen for you.",
+            "You are the rainbow that follows my darkest storms.",
+            "I loved you in the beginning,I love you still,I always have,I always will.",
+            "Your scent is my favorite fragrance,and your voice is my favorite song.",
+            "I never want to stop growing with you.",
+            "You are my dawn and all of my dusks.",
+            "I fall more in love with you with each heartbeat.",
+            "You are the answer to every riddle I've ever faced.",
+            "With you,I've found the peace I always longed for.",
+            "Your warmth is the first thing I want to feel in the morning.",
+            "I would choose you in a million lifetimes,in a million worlds,in any version of time.",
+            "You're my favorite sunrise and my hardest sunset.",
+            "Home isn't a location,it's wherever I'm with you.",
+            "I love you not only for what you give,but for who you are to me.",
+            "Like fireflies in the night,our love sparkles with gentle light.",
+            "In your courage,I found my bravery.In your love,I found my sanctuary.",
+            "Your love is the song my heart has been trying to sing.",
+            "Every encounter with you is like a beautiful poem I never want to finish.",
+            "You are the precious gem I was always searching for.",
+            "My love for you is a river that started with a single drop and will never dry up.",
+            "In a crowd of hearts,my soul will always yearn for you.",
+            "You are the light that guides me through my darkest paths.",
+            "I loved you in the moment,I love you still,I always have,I always will.",
+            "Your touch is my favorite feeling,and your smile is my favorite sight.",
+            "I never want to stop dreaming with you.",
+            "You are my spring and all of my autumns.",
+            "I fall more in love with you with each breath.",
+            "You are the key to every door I've ever wanted to open.",
+            "With you,I've found the beauty I always admired.",
+            "Your laughter is the first thing I want to hear in the morning.",
+            "I would choose you in a billion lifetimes,in a billion worlds,in any version of life.",
+            "You're my favorite joy and my hardest sorrow.",
+            "Home isn't a building,it's wherever I'm with you.",
+            "I love you not only for what you say,but for who you are to me.",
+            "Like roses in the garden,our love blooms with sweet fragrance.",
+            "In your understanding,I found my solace.In your support,I found my strength.",
+            "Your love is the dance my heart has been trying to perform.",
+            "Every moment spent with you is like a magical tale I never want to end.",
+            "You are the rare treasure I was always looking for.",
+            "My love for you is a voyage that started with a single sail and will never dock.",
+            "In a sea of souls,my spirit will always seek you.",
+            "You are the star that shines in my darkest skies.",
+            "I loved you in the instant,I love you still,I always have,I always will.",
+            "Your presence is my favorite presence,and your name is my favorite sound.",
+            "I never want to stop sharing my life with you.",
+            "You are my yesterday and all of my todays.",
+            "I fall more in love with you with each second.",
+            "You are the solution to every problem I've ever encountered.",
+            "With you,I've found the wonder I always marveled at.",
+            "Your kindness is the first thing I want to see in the morning.",
+            "I would choose you in a trillion lifetimes,in a trillion worlds,in any version of reality.",
+            "You're my favorite happiness and my hardest sadness.",
+            "Home isn't a place of residence,it's wherever I'm with you.",
+            "I love you not only for what you believe,but for who you are to me.",
+            "Like daisies in the meadow,our love blossoms with pure innocence.",
+            "In your generosity,I found my abundance.In your love,I found my fulfillment.",
+            "Your love is the story my heart has been trying to tell.",
+            "Every memory with you is like a perfect picture I never want to forget.",
+            "You are the hidden pearl I was always searching for.",
+            "My love for you is a melody that started with a single note and will never fade.",
+            "In a crowd of whispers,my heart will always listen for you.",
+            "You are the flame that warms my coldest nights.",
+            "I loved you in the blink of an eye,I love you still,I always have,I always will.",
+            "Your eyes are my favorite sight,and your smile is my favorite view.",
+            "I never want to stop building a future with you.",
+            "You are my morning and all of my evenings.",
+            "I fall more in love with you with each glance.",
+            "You are the answer to every question I've ever asked.",
+            "With you,I've found the magic I always believed in.",
+            "Your touch is the first thing I want to feel in the morning.",
+            "I would choose you in an infinite number of lifetimes,in an infinite number of worlds,in any version of existence.",
+            "You're my favorite beginning and my hardest ending.",
+            "Home isn't a destination,it's wherever I'm with you.",
+            "I love you not only for what you think,but for who you are to me.",
+            "Like sunbeams in the morning,our love shines with pure radiance.",
+            "In your love,I found my home.In your care,I found my comfort.",
+            "Your love is the poem my heart has been trying to write.",
+            "Every moment with you is like a beautiful song I never want to stop singing.",
+            "You are the missing piece I never knew I was searching for.",
+            "My love for you is a journey that started with a single step and will never end.",
+            "In a sea of people,my eyes will always search for you.",
+            "You are the sun that brightens my darkest days.",
+            "I loved you yesterday,I love you still,I always have,I always will.",
+            "Your voice is my favorite sound,and your name is my favorite word.",
+            "I never want to stop making memories with you.",
+            "You are my today and all of my tomorrows.",
+            "I fall in love with you more every day.",
+            "You are the answer to every prayer I've offered."
         ];
         
         // Get modal elements
         const petalModal = document.getElementById('petalModal');
         const petalText = document.getElementById('petalText');
+        const closeBtn = document.getElementById('closeBtn');
         
         // Function to show random quote
         function showRandomQuote() {
@@ -376,14 +589,30 @@
             // Check if the click was on a navigation icon
             const isNavIcon = event.target.closest('.nav-icon');
             
-            // If not a nav icon, show the quote
-            if (!isNavIcon) {
+            // Check if click is in the middle 50% of the screen
+            const windowWidth = window.innerWidth;
+            const clickX = event.clientX;
+            const leftBoundary = windowWidth * 0.25;
+            const rightBoundary = windowWidth * 0.75;
+            
+            // If not a nav icon and in the middle 50% area, show the quote
+            if (!isNavIcon && clickX >= leftBoundary && clickX <= rightBoundary) {
                 showRandomQuote();
             }
         });
         
-        // Close modal when clicking on it
-        petalModal.addEventListener('click', hideModal);
+        // Close modal when clicking on close button
+        closeBtn.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevent event from bubbling to modal
+            hideModal();
+        });
+        
+        // Close modal when clicking outside the petal content
+        petalModal.addEventListener('click', function(event) {
+            if (event.target === petalModal) {
+                hideModal();
+            }
+        });
     </script>
 </body>
 </html>
