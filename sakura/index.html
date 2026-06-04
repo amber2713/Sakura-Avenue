@@ -48,22 +48,19 @@
         }
         
         .container {
-            position: absolute;
-            left: 320px;
-            right: 48px;
-            top: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
             height: 100%;
-            padding: 2rem 2rem 9rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            z-index: 5;
         }
         
         h1 {
-            font-size: clamp(3rem, 5vw, 4.8rem);
+            font-size: 4rem;
             margin-bottom: 1.5rem;
             color: #ff9aac;
             text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8), 
@@ -74,8 +71,8 @@
         }
         
         p {
-            font-size: clamp(1.2rem, 2.2vw, 1.75rem);
-            max-width: 720px;
+            font-size: 1.8rem;
+            max-width: 800px;
             line-height: 1.6;
             margin-bottom: 2rem;
             color: #fff4f6;
@@ -98,14 +95,6 @@
         
         .nav-icon:hover {
             transform: scale(1.3);
-        }
-        
-        .back-icon {
-            top: 30px;
-            left: 30px;
-            width: 60px;
-            height: 60px;
-            opacity: 0.8;
         }
         
         .sakura-icon {
@@ -142,113 +131,11 @@
         /* Footer */
         footer {
             position: absolute;
-            bottom: 150px;
-            left: 320px;
-            right: 48px;
-            width: auto;
+            bottom: 10px;
+            width: 100%;
             text-align: center;
             font-size: 1.2rem;
             color: #fff;
-            z-index: 4;
-        }
-
-        .character-chat {
-            position: fixed;
-            left: 30px;
-            bottom: 20px;
-            width: min(360px, calc(100vw - 40px));
-            z-index: 900;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .guomo-character {
-            width: min(440px, 56vw);
-            max-height: 80vh;
-            object-fit: contain;
-            filter: drop-shadow(0 16px 26px rgba(75, 31, 45, 0.38));
-            pointer-events: none;
-        }
-
-        .ai-chat {
-            width: 100%;
-            color: #4b1f2d;
-            text-shadow: none;
-        }
-
-        .ai-chat-panel {
-            background: rgba(255, 250, 252, 0.94);
-            border: 1px solid rgba(255, 154, 172, 0.9);
-            border-radius: 14px;
-            box-shadow: 0 10px 24px rgba(75, 31, 45, 0.24);
-            backdrop-filter: blur(10px);
-            padding: 12px;
-        }
-
-        .ai-chat-messages {
-            height: 90px;
-            overflow-y: auto;
-            padding: 8px 10px 10px;
-            font-size: 0.8rem;
-            line-height: 1.4;
-            text-align: left;
-        }
-
-        .ai-chat-message {
-            margin-bottom: 4px;
-        }
-
-        .ai-chat-message strong {
-            color: #b83256;
-        }
-
-        .ai-chat-form {
-            display: flex;
-            gap: 5px;
-        }
-
-        .ai-chat-input {
-            flex: 1;
-            min-width: 0;
-            border: 1px solid rgba(184, 50, 86, 0.26);
-            border-radius: 999px;
-            padding: 6px 8px;
-            font: inherit;
-            font-size: 0.62rem;
-            color: #4b1f2d;
-            outline: none;
-            background: rgba(255, 255, 255, 0.86);
-        }
-
-        .ai-chat-input:focus {
-            border-color: #ff7894;
-            box-shadow: 0 0 0 3px rgba(255, 120, 148, 0.18);
-        }
-
-        .ai-chat-button {
-            width: 24px;
-            height: 24px;
-            border: 0;
-            border-radius: 50%;
-            background: #ff7894;
-            color: white;
-            cursor: pointer;
-            display: grid;
-            place-items: center;
-            transition: transform 0.2s ease, background 0.2s ease;
-        }
-
-        .ai-chat-button:hover {
-            transform: translateY(-1px);
-            background: #e85f7d;
-        }
-
-        .ai-chat-button:disabled {
-            cursor: wait;
-            opacity: 0.7;
-            transform: none;
         }
         
         /* New styles for the petal modal */
@@ -347,6 +234,35 @@
             transform: rotate(-45deg);
         }
         
+        /* Clickable area indicators */
+        .click-area {
+            position: absolute;
+            top: 0;
+            width: 25%;
+            height: 100%;
+            z-index: 50;
+        }
+        
+        .click-area.left {
+            left: 0;
+        }
+        
+        .click-area.right {
+            right: 0;
+        }
+        
+        .click-area-text {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1rem;
+            font-style: italic;
+            pointer-events: none;
+        }
+        
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -361,88 +277,11 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-
-        @media (max-width: 700px) {
-            .container {
-                width: 100%;
-                margin: 0;
-                padding: 5.5rem 1.25rem 15rem;
-                justify-content: flex-start;
-            }
-
-            h1 {
-                font-size: 2.8rem;
-                margin-bottom: 1rem;
-            }
-
-            p {
-                font-size: 1.05rem;
-                line-height: 1.45;
-                margin-bottom: 1rem;
-                max-width: 100%;
-            }
-
-            .quote {
-                margin-top: 0.5rem;
-                font-size: 1rem;
-            }
-
-            footer {
-                display: none;
-            }
-
-            .character-chat {
-                left: 14px;
-                bottom: 12px;
-                width: 220px;
-            }
-
-            .guomo-character {
-                width: 190px;
-                max-height: 48vh;
-            }
-
-            .ai-chat-messages {
-                height: 54px;
-                font-size: 0.65rem;
-            }
-
-            .back-icon {
-                top: 16px;
-                left: 16px;
-                width: 50px;
-                height: 50px;
-            }
-        }
-
-        @media (min-width: 701px) and (max-width: 1000px) {
-            .container {
-                width: calc(100% - 260px);
-                margin-right: 24px;
-                padding-bottom: 8rem;
-            }
-
-            .character-chat {
-                width: 250px;
-            }
-
-            .guomo-character {
-                width: 250px;
-            }
-
-            footer {
-                left: 260px;
-                right: 24px;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="background"></div>
     <div class="overlay"></div>
-    
-    <!-- Navigation Icons -->
-    
     
     <a href="https://amber2713.github.io/for-netlify/USTC-Garden-Party/" class="nav-icon sakura-icon">
         <svg viewBox="0 0 100 100">
@@ -466,7 +305,6 @@
         </svg>
     </a>
     
-    <!-- Main Content -->
     <div class="container">
         <h1>Sakura Avenue</h1>
         <p class="click-hint">You can try clicking anywhere on the page</p>
@@ -474,7 +312,13 @@
         <p class="quote">"In the cherry blossom's shade, there's no such thing as a stranger." - Kobayashi Issa</p>
     </div>
     
-    <!-- Petal Modal -->
+    <div class="click-area left">
+        <div class="click-area-text">Non-clickable area</div>
+    </div>
+    <div class="click-area right">
+        <div class="click-area-text">Non-clickable area</div>
+    </div>
+    
     <div id="petalModal" class="petal-modal">
         <div class="petal-content">
             <div class="close-btn" id="closeBtn"></div>
@@ -493,46 +337,23 @@
         </div>
     </div>
     
-    <footer></footer>
-
-    <div class="character-chat">
-        <img class="guomo-character" src="images/guomo_suit_cutout.png" alt="Guomo">
-        <div class="ai-chat" aria-label="Sakura AI chat">
-            <div class="ai-chat-panel">
-                <div class="ai-chat-messages" id="chatDisplay">
-                    <div class="ai-chat-message"><strong>Sakura AI:</strong> Ask me under the blossoms.</div>
-                </div>
-                <form class="ai-chat-form" id="chatForm">
-                    <input class="ai-chat-input" id="userInput" type="text" placeholder="Ask..." autocomplete="off">
-                    <button class="ai-chat-button" id="sendButton" type="submit" aria-label="Send message">
-                        <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true">
-                            <path d="M3.5 20.5 21 12 3.5 3.5 6 10.5 14 12 6 13.5z" fill="currentColor"/>
-                        </svg>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
+    <footer>
+        <p>Experience the Beauty of Nature | Sakura Avenue 2023</p>
+    </footer>
 
     <script>
         // Create falling sakura petals
         function createSakura() {
             const sakura = document.createElement('div');
-            sakura.classList.add('sakura-fall');
-            
-            // Random size
             const size = Math.random() * 20 + 10;
+            sakura.classList.add('sakura-fall');
             sakura.style.width = `${size}px`;
             sakura.style.height = `${size}px`;
-            
-            // Random position
             sakura.style.left = `${Math.random() * 100}vw`;
             
-            // Random animation duration
             const duration = Math.random() * 10 + 5;
             sakura.style.animationDuration = `${duration}s`;
             
-            // Sakura SVG
             sakura.innerHTML = `
                 <svg viewBox="0 0 100 100" width="${size}" height="${size}">
                     <path d="M50,20 
@@ -549,16 +370,13 @@
             
             document.body.appendChild(sakura);
             
-            // Remove after animation completes
             setTimeout(() => {
                 sakura.remove();
             }, duration * 1000);
         }
         
-        // Create multiple sakura petals
         setInterval(createSakura, 300);
         
-        // Initial sakura
         for (let i = 0; i < 15; i++) {
             setTimeout(createSakura, i * 100);
         }
@@ -585,26 +403,6 @@
             "You're my favorite hello and my hardest goodbye.",
             "Home isn't a place, it's wherever I'm with you.",
             "I love you not only for what you are, but for what I am when I am with you.",
-            "Like cherry blossoms in the spring,our love blooms anew with each passing day.",
-            "In your eyes,I found my home.In your heart,I found my love.",
-            "Your love is the poetry my heart has been trying to write.",
-            "Every moment with you is like a beautiful dream I never want to end.",
-            "You are the missing piece I never knew I was searching for.",
-            "My love for you is a journey starting at forever and ending at never.",
-            "In a sea of people,my eyes will always search for you.",
-            "You are the sun that brightens my darkest days.",
-            "I loved you yesterday,I love you still,I always have,I always will.",
-            "Your voice is my favorite sound,and your name is my favorite word.",
-            "I never want to stop making memories with you.",
-            "You are my today and all of my tomorrows.",
-            "I fall in love with you more every day.",
-            "You are the answer to every prayer I've offered.",
-            "With you,I've found the love I always dreamed of.",
-            "Your smile is the first thing I want to see in the morning.",
-            "I would choose you in a hundred lifetimes,in a hundred worlds,in any version of reality.",
-            "You're my favorite hello and my hardest goodbye.",
-            "Home isn't a place,it's wherever I'm with you.",
-            "I love you not only for what you are,but for what I am when I am with you.",
             "Like stars in the night sky,our love twinkles with endless possibilities.",
             "In your smile,I found my happiness.In your touch,I found my comfort.",
             "Your love is the melody my heart has been longing to hear.",
@@ -740,25 +538,21 @@
         
         // Add click event listener to document
         document.addEventListener('click', function(event) {
-            // Check if the click was on a navigation icon
             const isNavIcon = event.target.closest('.nav-icon');
-            const isChat = event.target.closest('.ai-chat');
             
-            // Check if click is in the middle 50% of the screen
             const windowWidth = window.innerWidth;
             const clickX = event.clientX;
             const leftBoundary = windowWidth * 0.25;
             const rightBoundary = windowWidth * 0.75;
             
-            // If not a nav icon and in the middle 50% area, show the quote
-            if (!isNavIcon && !isChat && clickX >= leftBoundary && clickX <= rightBoundary) {
+            if (!isNavIcon && clickX >= leftBoundary && clickX <= rightBoundary) {
                 showRandomQuote();
             }
         });
         
         // Close modal when clicking on close button
         closeBtn.addEventListener('click', function(event) {
-            event.stopPropagation(); // Prevent event from bubbling to modal
+            event.stopPropagation();
             hideModal();
         });
         
@@ -767,70 +561,6 @@
             if (event.target === petalModal) {
                 hideModal();
             }
-        });
-
-        const chatHistory = [];
-        const chatForm = document.getElementById('chatForm');
-        const userInput = document.getElementById('userInput');
-        const chatDisplay = document.getElementById('chatDisplay');
-        const sendButton = document.getElementById('sendButton');
-
-        function escapeHtml(value) {
-            return value
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;');
-        }
-
-        function addChatMessage(role, content) {
-            const message = document.createElement('div');
-            message.className = 'ai-chat-message';
-            const speaker = role === 'user' ? 'You' : 'Sakura AI';
-            message.innerHTML = `<strong>${speaker}:</strong> ${escapeHtml(content)}`;
-            chatDisplay.appendChild(message);
-            chatDisplay.scrollTop = chatDisplay.scrollHeight;
-            return message;
-        }
-
-        async function handleChat(text) {
-            chatHistory.push({ role: 'user', content: text });
-            addChatMessage('user', text);
-
-            const loadingMessage = addChatMessage('assistant', 'Listening among the falling petals...');
-            sendButton.disabled = true;
-
-            try {
-                const response = await fetch('/.netlify/functions/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ messages: chatHistory })
-                });
-
-                if (!response.ok) {
-                    throw new Error(`Request failed: ${response.status}`);
-                }
-
-                const data = await response.json();
-                const content = data.content || 'The petals are quiet for a moment. Try asking again.';
-                chatHistory.push({ role: 'assistant', content });
-                loadingMessage.innerHTML = `<strong>Sakura AI:</strong> ${escapeHtml(content)}`;
-            } catch (error) {
-                loadingMessage.innerHTML = '<strong>Sakura AI:</strong> The breeze interrupted my reply. Please try again later.';
-            } finally {
-                sendButton.disabled = false;
-                userInput.focus();
-                chatDisplay.scrollTop = chatDisplay.scrollHeight;
-            }
-        }
-
-        chatForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const text = userInput.value.trim();
-            if (!text || sendButton.disabled) return;
-            userInput.value = '';
-            handleChat(text);
         });
     </script>
 </body>
